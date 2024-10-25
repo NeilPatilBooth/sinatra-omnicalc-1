@@ -1,7 +1,7 @@
 require "sinatra"
 require "sinatra/reloader"
 
-
+#######Square#########
 get("/square/new") do
   erb(:new_square_calc)
 end
@@ -12,17 +12,33 @@ get("/square/results") do
   erb(:square_results)
 end
 
+########SquareRoot###########
+get("/square_root/new") do
+  erb(:new_squareroot_calc)
+end
 
+get("/square_root/results") do
+  @the_num = params.fetch("users_number").to_f
+  @the_result = @the_num ** 0.5
+  erb(:squareroot_results)
+end
 
+######Finance#######
+get("/payment/new") do
+  erb(:payment_calc)
+end
 
-
-
-
-
-
-
-
-
+get("/payment/results") do
+  @apr=params.fetch("users_apr").to_f 
+  @apr_monthly=@apr/100/12
+  @years=params.fetch("users_years").to_f
+  @months=@years * 12
+  @principal=params.fetch("users_principal").to_f
+  @num=@apr*@principal
+  @denom=1-(1+@apr)**-@years
+  @solution = @num/@denom
+  erb(:payment_results)
+end
 
 
 
