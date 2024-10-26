@@ -1,15 +1,12 @@
 <h1>
   Payment Results
 </h1>
-<h2>
-  <%= @apr_monthly %>
-</h2>
 <dl>
   <dt>
     APR
   </dt>
   <dd>
-   <%= @apr %>
+   <%= @formatted_rate %>
   </dd>
   <dt>
     Number of years
@@ -22,14 +19,14 @@
     Principal
   </dt>
   <dd>
-    <%= @principal %>
+    <%=  @formatted_principal %>
   </dd>
 
   <dt>
     Payment
   </dt>
   <dd>
-    <%= @solution %>
+    <%= @solution_formatted %>
   </dd>
 </dl>
 

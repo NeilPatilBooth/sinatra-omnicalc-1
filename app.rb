@@ -29,14 +29,17 @@ get("/payment/new") do
 end
 
 get("/payment/results") do
-  @apr=params.fetch("users_apr").to_f 
-  @apr_monthly=@apr/100/12
+  @apr=params.fetch("users_apr").to_f
+  @formatted_rate = @apr.to_fs(:percentage, { :precision => 4 })
+  @apr_monthly=(@apr/100/12)
   @years=params.fetch("users_years").to_f
   @months=@years * 12
   @principal=params.fetch("users_principal").to_f
+  @formatted_principal=@principal.to_fs(:currency, {:precision =>2})
   @num=@apr_monthly*@principal
   @denom=1-(1+@apr_monthly)**-@months
   @solution = @num/@denom
+  @solution_formatted = @solution.to_fs(:currency, {:precision =>2})
   erb(:payment_results)
 end
 
