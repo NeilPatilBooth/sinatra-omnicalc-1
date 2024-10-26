@@ -34,8 +34,8 @@ get("/payment/results") do
   @years=params.fetch("users_years").to_f
   @months=@years * 12
   @principal=params.fetch("users_principal").to_f
-  @num=@apr*@principal
-  @denom=1-(1+@apr)**-@years
+  @num=@apr_monthly*@principal
+  @denom=1-(1+@apr_monthly)**-@months
   @solution = @num/@denom
   erb(:payment_results)
 end
