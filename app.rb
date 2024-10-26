@@ -51,9 +51,9 @@ end
 
 
 get("/random/results") do
-  @maximum = params.fetch("users_max").to_f
-  @minimum = params.fetch("users_min").to_f
-  @solution = rand(@maximum..@minimum)
+  @max = params.fetch("usermax")
+  @min = params.fetch("usermin")
+  #@solution = rand(@max..@min)
   erb(:random_results)
 end
 
